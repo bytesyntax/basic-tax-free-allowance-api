@@ -1,6 +1,6 @@
 ﻿namespace BasicTaxFreeAllowanceApi.Models
 {
-    class BTFARepository
+    public class BTFARepository
     {
         private readonly Dictionary<string, BTFARecord> _records = new();
 
@@ -26,7 +26,8 @@
             return _records.Values.ToList();
         }
 
-        public void Update(BTFARecord record)
+        // Note: not part of requirements
+/*        public void Update(BTFARecord record)
         {
             var existingRecord = GetById(record.Id);
             if (existingRecord == null)
@@ -35,11 +36,12 @@
             }
 
             _records[record.Id] = record;
-        }
+        }*/
 
-        public void Delete(string id)
+        // Note: not part of requirements
+/*        public void Delete(string id)
         {
             _records.Remove(id);
-        }
+        }*/
     }
 }

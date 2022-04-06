@@ -1,6 +1,6 @@
 ﻿namespace BasicTaxFreeAllowanceApi.Models
 {
-    class BTFARecord
+    public class BTFARecord
     {
         private static long Records = 0;
 

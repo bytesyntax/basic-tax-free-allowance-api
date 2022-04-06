@@ -5,25 +5,25 @@ builder.Services.AddSingleton<BTFARepository>();
 
 var app = builder.Build();
 
-app.MapGet("/records", ([FromServices] BTFARepository repo) =>
+app.MapGet("/btfa", ([FromServices] BTFARepository repo) =>
 {
     return repo.GetAll();
 });
 
-app.MapGet("/records/{id}", ([FromServices] BTFARepository repo, string id) =>
+app.MapGet("/btfa/{id}", ([FromServices] BTFARepository repo, string id) =>
 {
     var record = repo.GetById(id);
     return record is not null ? Results.Ok(record) : Results.NotFound();
 });
 
-app.MapPost("/records", ([FromServices] BTFARepository repo, BTFARecord record) =>
+app.MapPost("/btfa", ([FromServices] BTFARepository repo, BTFARecord record) =>
 {
     repo.Create(record);
-    return Results.Created($"/records/{record.Id}", record);
+    return Results.Created($"/btfa/{record.Id}", record);
 });
 
 // Note: not part of requirements, also as implemented it will create a new record (due to BTFARecord implementation of Id)
-/*app.MapPut("/records/{id}", ([FromServices] BTFARepository repo, string id, BTFARecord updatedRecord) =>
+/*app.MapPut("/btfa/{id}", ([FromServices] BTFARepository repo, string id, BTFARecord updatedRecord) =>
 {
     var record = repo.GetById(id);
     if (record is null)
@@ -36,7 +36,7 @@ app.MapPost("/records", ([FromServices] BTFARepository repo, BTFARecord record) 
 });*/
 
 // Note: not part of requirements
-/*app.MapDelete("/records/{id}", ([FromServices] BTFARepository repo, string id) =>
+/*app.MapDelete("/btfa/{id}", ([FromServices] BTFARepository repo, string id) =>
 {
     repo.Delete(id);
     return Results.Ok();
